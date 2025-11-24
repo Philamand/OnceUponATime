@@ -11,3 +11,11 @@ wheels/
 
 .devcontainer/
 .python-version
+
+# Database migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Static files collected
+staticfiles/
+media/

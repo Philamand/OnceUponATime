@@ -19,3 +19,6 @@ wheels/
 # Static files collected
 staticfiles/
 media/
+
+.env
+.vscode/

@@ -3,6 +3,21 @@ from django.urls import reverse
 from .factories import BookFactory, PageFactory
 
 
+class BookListViewTest(TestCase):
+    def setUp(self):
+        self.published = BookFactory.create_batch(3, published=True)
+        self.unpublished = BookFactory.create_batch(2, published=False)
+
+    def test_returns_only_published_books(self):
+        response = self.client.get(reverse("book_list"))
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(len(response.context["book_list"]), 3)
+
+        for book in response.context["book_list"]:
+            self.assertTrue(book.published)
+
+
 class BookDetailViewTest(TestCase):
     def setUp(self):
         self.book = BookFactory()

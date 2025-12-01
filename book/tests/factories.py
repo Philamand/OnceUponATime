@@ -8,6 +8,7 @@ class BookFactory(factory.django.DjangoModelFactory):
 
     title = factory.Faker("sentence")
     cover = factory.django.ImageField()
+    published = True
 
 
 class PageFactory(factory.django.DjangoModelFactory):

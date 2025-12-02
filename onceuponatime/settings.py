@@ -41,7 +41,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "parler.urls"
+ROOT_URLCONF = "onceuponatime.urls"
 
 TEMPLATES = [
     {
@@ -58,7 +58,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "parler.wsgi.application"
+WSGI_APPLICATION = "onceuponatime.wsgi.application"
 
 
 # ─────────────────────────────────────────────────────────────

@@ -50,7 +50,7 @@ wheels = [
 ]
 
 [[package]]
-name = "parler"
+name = "onceuponatime"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -18,7 +18,7 @@ export default defineConfig({
         'styles': './src/style.css'
       },
       output: {
-        entryFileNames: 'svelte/[name]-[hash].js',
+        entryFileNames: 'svelte/[name].js',
         chunkFileNames: 'svelte/[name]-[hash].js',
         assetFileNames: '[name].[ext]'
       }

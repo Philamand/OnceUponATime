@@ -15,6 +15,9 @@ DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 ALLOWED_HOSTS: List[str] = os.getenv(
     "DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1"
 ).split(",")
+INTERNAL_IPS: List[str] = os.getenv("DJANGO_INTERNAL_IPS", "localhost,127.0.0.1").split(
+    ","
+)
 
 # ─────────────────────────────────────────────────────────────
 # APPLICATION DEFINITION
@@ -48,6 +51,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",

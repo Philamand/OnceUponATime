@@ -18,4 +18,5 @@ class BookDetailView(DetailView):
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context.update(get_book_pages(self.object))
+        context["ip"] = self.request.META["REMOTE_ADDR"]
         return context

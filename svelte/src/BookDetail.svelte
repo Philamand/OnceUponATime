@@ -47,14 +47,27 @@
             <div class="p-6">
                 <p>{pages[currentIndex].text}</p>
                 {#if currentIndex === 0}
-                    <label class="flex justify-center cursor-pointer gap-2">
-                        <span class="label-text">Lecture Auto</span>
-                        <input
-                            type="checkbox"
-                            class="toggle"
-                            bind:checked={autoplay}
-                        />
-                    </label>
+                    <div class="mt-6 w-full flex justify-center">
+                        <fieldset
+                            class="fieldset bg-base-100 border-base-300 rounded-box w-64 border p-4"
+                        >
+                            <legend class="fieldset-legend"
+                                >Lecture Automatique</legend
+                            >
+                            <label class="label">
+                                <input
+                                    type="checkbox"
+                                    bind:checked={autoplay}
+                                    class="toggle"
+                                />
+                                {#if autoplay}
+                                    Activée
+                                {:else}
+                                    Désactivée
+                                {/if}
+                            </label>
+                        </fieldset>
+                    </div>
                 {/if}
             </div>
         </div>

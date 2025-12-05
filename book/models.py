@@ -28,3 +28,6 @@ class Page(BaseModel):
     text = models.TextField()
     image = models.ImageField(upload_to="books/images/")
     audio = models.FileField(upload_to="books/audio/", blank=True, null=True)
+
+    def __str__(self) -> str:
+        return f"{self.book.title} - {self.text[:20]}"

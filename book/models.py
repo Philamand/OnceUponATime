@@ -27,4 +27,4 @@ class Page(BaseModel):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     text = models.TextField()
     image = models.ImageField(upload_to="books/images/")
-    audio = models.FileField(upload_to="books/audio/")
+    audio = models.FileField(upload_to="books/audio/", blank=True, null=True)

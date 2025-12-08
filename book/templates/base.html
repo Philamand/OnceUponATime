@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>{% block title %}{% endblock %}</title>
     {% if debug %}
       <link href="http://localhost:5173/src/style.css" rel="stylesheet">
     {% else %}

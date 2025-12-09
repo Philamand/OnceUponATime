@@ -1,5 +1,5 @@
 <script>
-    import { onMount, getContext } from "svelte";
+    import { getContext } from "svelte";
 
     let currentIndex = $state(0);
     let autoplay = $state(false);

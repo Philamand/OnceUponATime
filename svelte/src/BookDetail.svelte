@@ -36,6 +36,13 @@
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
+
+<svelte:head>
+    {#each pages as page}
+        <link rel="preload" as="image" href={page.image} />
+    {/each}
+</svelte:head>
+
 <main>
     <div
         role="link"

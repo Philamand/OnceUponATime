@@ -1,7 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Once Upon A Time
+{% endblock %}
+
+{% block head %}
+    {% if debug %}
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/src/book_list.js"></script>
+    {% else %}
+        <script type="module" src="{% static 'svelte/book_list.js' %}"></script>
+    {% endif %}
 {% endblock %}
 
 {% block content %}

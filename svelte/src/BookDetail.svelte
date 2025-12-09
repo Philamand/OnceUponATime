@@ -21,8 +21,8 @@
             event.clientX > window.screen.width / 2 &&
             currentIndex < pages.length - 1
         ) {
-            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
             currentIndex++;
+            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
             if (audioPlayer) {
                 audioPlayer.play();
             }

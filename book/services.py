@@ -8,10 +8,12 @@ def get_book_pages(book: Book) -> Dict[str, Any]:
     Returns a Book's pages data for the Detail View.
     """
 
-    pages = [{"image": book.cover.url, "text": book.title}]
+    pages: list[dict[str, str | dict[str, str]]] = [
+        {"image": book.cover.url, "text": book.title}
+    ]
 
     for index, page in enumerate(book.page_set.order_by("id"), start=1):
-        audio = None
+        audio: dict[str, str] | None = None
         if page.audio:
             audio = {"id": f"audio-{index}", "url": page.audio.url}
         pages.append(

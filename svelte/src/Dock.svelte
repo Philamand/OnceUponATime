@@ -13,6 +13,21 @@
         dockData.sound = !dockData.sound;
         if (!dockData.sound) {
             dockData.autoplay = false;
+
+            document.querySelectorAll("audio").forEach((audio) => {
+                if (!audio.paused) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+        } else {
+            let audioPlayer = document.getElementById(
+                `audio-${dockData.currentIndex}`,
+            );
+
+            if (audioPlayer) {
+                audioPlayer.play();
+            }
         }
     }
 </script>

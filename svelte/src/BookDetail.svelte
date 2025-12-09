@@ -1,15 +1,16 @@
 <script>
     import { dockData } from "./dock_data.svelte";
 
-    let currentIndex = $state(0);
     let width = $state(0);
     let height = $state(0);
     let colClass = $derived(width > height ? "flex-row" : "flex-col");
     const pages = JSON.parse(document.getElementById("pages-data").textContent);
 
     function onclick(event) {
-        if (currentIndex > 0) {
-            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
+        if (dockData.currentIndex > 0) {
+            let audioPlayer = document.getElementById(
+                `audio-${dockData.currentIndex}`,
+            );
             if (audioPlayer) {
                 audioPlayer.pause();
                 audioPlayer.currentTime = 0;
@@ -18,18 +19,20 @@
 
         if (
             event.clientX > window.screen.width / 2 &&
-            currentIndex < pages.length - 1
+            dockData.currentIndex < pages.length - 1
         ) {
-            currentIndex++;
-            let audioPlayer = document.getElementById(`audio-${currentIndex}`);
-            if (audioPlayer) {
+            dockData.currentIndex++;
+            let audioPlayer = document.getElementById(
+                `audio-${dockData.currentIndex}`,
+            );
+            if (audioPlayer && dockData.sound) {
                 audioPlayer.play();
             }
         } else if (
             event.clientX < window.screen.width / 2 &&
-            currentIndex > 0
+            dockData.currentIndex > 0
         ) {
-            currentIndex--;
+            dockData.currentIndex--;
         }
     }
 </script>
@@ -39,7 +42,7 @@
 <main>
     <div
         role="link"
-        tabindex={currentIndex}
+        tabindex={dockData.currentIndex}
         {onclick}
         onkeyup={(e) =>
             e.key === "ArrowLeft"
@@ -48,10 +51,10 @@
         aria-label="Change Page"
         class={["h-screen flex", colClass]}
     >
-        <img src={pages[currentIndex].image} alt="Illustration" />
+        <img src={pages[dockData.currentIndex].image} alt="Illustration" />
         <div class="h-full w-full flex flex-col justify-center text-center">
             <div class="p-6">
-                <p>{pages[currentIndex].text}</p>
+                <p>{pages[dockData.currentIndex].text}</p>
             </div>
             <div class="h-18"></div>
         </div>

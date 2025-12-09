@@ -10,11 +10,21 @@ class BaseModel(models.Model):
         abstract = True
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Book(BaseModel):
     title = models.CharField(max_length=200)
     description = models.TextField()
     cover = models.ImageField(upload_to="books/covers/")
     published = models.BooleanField(default=False)
+
+    tags = models.ManyToManyField(Tag, related_name="books", blank=True)
 
     def __str__(self) -> str:
         return self.title

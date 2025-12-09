@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Book, Page
+from .models import Book, Page, Tag
 from .widgets import AudioRecorderWidget
 
 
@@ -12,3 +12,8 @@ class PageModelAdmin(admin.ModelAdmin):
         if db_field.name == "audio":
             kwargs["widget"] = AudioRecorderWidget
         return super().formfield_for_dbfield(db_field, request, **kwargs)
+
+
+@admin.register(Tag)
+class TagModelAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}

@@ -12,6 +12,10 @@
     {% else %}
         <script type="module" src="{% static 'svelte/book_detail.js' %}"></script>
     {% endif %}
+    
+    {% for page in pages %}
+        <link rel="preload" as="image" href="{{ page.image }}" />
+    {% endfor %}
     {{ pages|json_script:"pages-data" }}
 {% endblock %}
 

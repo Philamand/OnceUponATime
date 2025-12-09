@@ -1,4 +1,5 @@
 from typing import Dict, Any
+from django.db.models.query import QuerySet
 from .models import Book
 
 
@@ -22,3 +23,16 @@ def get_book_pages(book: Book) -> Dict[str, Any]:
         )
 
     return {"pages": pages}
+
+
+def get_book_list_queryset(queryset: QuerySet[Book], tag: str | None) -> QuerySet[Book]:
+    """
+    Returns a queryset for the BookList view.
+    """
+
+    queryset = queryset.filter(published=True)
+
+    if tag:
+        queryset = queryset.filter(tags__slug=tag)
+
+    return queryset

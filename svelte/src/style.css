@@ -1,7 +1,7 @@
 @import "tailwindcss" source("../../");
 
 @plugin "daisyui" {
-    themes: cupcake --default, synthwave;
+    themes: pastel --default, synthwave;
 }
 
 ;

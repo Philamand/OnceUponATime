@@ -8,7 +8,7 @@
             </figure>
             <div class="card-body">
                 <h2 class="card-title">{{ book.title }}</h2>
-                <div class="flex gap-2">
+                <div class="flex flex-wrap gap-2">
                     {% for tag in book.tags.all %}
                         <div class="badge badge-primary" hx-get="{% url 'book_list_tag' slug=tag.slug %}" hx-target="#book_list" hx-push-url="true">{{ tag }}</div>
                     {% endfor %}

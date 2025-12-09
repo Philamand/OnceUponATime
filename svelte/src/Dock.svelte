@@ -1,5 +1,13 @@
 <script>
-    import { House, Play, Pause, Volume2, VolumeOff } from "@lucide/svelte";
+    import {
+        House,
+        Play,
+        Pause,
+        Volume2,
+        VolumeOff,
+        Sun,
+        Moon,
+    } from "@lucide/svelte";
     import { dockData } from "./dock_data.svelte";
 
     function switchAutoplay() {
@@ -36,6 +44,10 @@
         localStorage.setItem("autoplay", dockData.autoplay);
         localStorage.setItem("sound", dockData.sound);
     }
+
+    $effect(() => {
+        localStorage.setItem("theme", dockData.theme ? "dark" : "light");
+    });
 </script>
 
 <div class="dock">
@@ -61,4 +73,20 @@
         {/if}
         <span class="dock-label">Volume</span>
     </button>
+
+    <div>
+        <label class="swap swap-rotate">
+            <input
+                type="checkbox"
+                class="theme-controller"
+                value="synthwave"
+                bind:checked={dockData.theme}
+            />
+
+            <Sun class="swap-off" />
+
+            <Moon class="swap-on" />
+        </label>
+        <span class="dock-label">Theme</span>
+    </div>
 </div>

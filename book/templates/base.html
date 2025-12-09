@@ -7,12 +7,16 @@
     <title>{% block title %}{% endblock %}</title>
     {% if debug %}
       <link href="http://localhost:5173/src/style.css" rel="stylesheet">
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/src/dock.js"></script>
     {% else %}
       <link href="{% static 'styles.css' %}" rel="stylesheet">
+      <script type="module" src="{% static 'svelte/dock.js' %}"></script>
     {% endif %}
     {% block head %}{% endblock %}
   </head>
   <body>
     {% block content %}{% endblock %}
+    <div id="dock"></div>
   </body>
 </html>

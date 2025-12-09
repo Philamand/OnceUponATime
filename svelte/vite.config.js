@@ -16,6 +16,7 @@ export default defineConfig({
       input: {
         'book_detail': './src/book_detail.js',
         'book_list': './src/book_list.js',
+        'dock': './src/dock.js',
         'styles': './src/style.css'
       },
       output: {

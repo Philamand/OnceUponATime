@@ -11,8 +11,10 @@ class BaseModel(models.Model):
 
 class Documentary(BaseModel):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="documentaries/")
+    image = models.ImageField(upload_to="documentaries/images/")
+    audio = models.FileField(upload_to="documentaries/audio/", blank=True, null=True)
     text = models.TextField()
+    published = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title

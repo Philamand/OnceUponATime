@@ -16,5 +16,8 @@ class Documentary(BaseModel):
     text = models.TextField()
     published = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name_plural = "Documentaries"
+
     def __str__(self) -> str:
         return self.title

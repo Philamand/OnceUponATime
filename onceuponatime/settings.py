@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "pwa",
     "book.apps.BookConfig",
     "documentary.apps.DocumentaryConfig",
 ]
@@ -152,3 +153,17 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+# ─────────────────────────────────────────────────────────────
+# PWA
+# ─────────────────────────────────────────────────────────────
+PWA_APP_NAME = "Once Upon A Time"
+PWA_APP_ICONS = [
+    {"src": "/static/images/android-chrome-192x192.png", "sizes": "192x192"}
+]
+PWA_APP_ICONS_APPLE = [
+    {"src": "/static/images/apple-touch-icon.png", "sizes": "180x180"}
+]
+PWA_APP_SPLASH_SCREEN = [{"src": "/static/images/android-chrome-512x512.png"}]
+PWA_APP_LANG = "fr-FR"
+PWA_APP_DEBUG_MODE = False

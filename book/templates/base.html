@@ -1,10 +1,13 @@
 {% load static %}
+{% load pwa %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon.ico' %}">
+    {% progressive_web_app_meta %}
     {% if debug %}
       <link href="http://localhost:5173/src/style.css" rel="stylesheet">
       <script type="module" src="http://localhost:5173/@vite/client"></script>

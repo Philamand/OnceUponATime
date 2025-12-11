@@ -23,6 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     path("", include("book.urls")),
     path("documentaries/", include("documentary.urls")),
+    path("", include("pwa.urls")),
     path("admin/", admin.site.urls),
 ]
 

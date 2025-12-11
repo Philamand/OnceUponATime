@@ -15,6 +15,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'book_detail': './src/book_detail.js',
+        'documentary_list': './src/documentary_list.js',
         'htmx': './src/htmx.js',
         'dock': './src/dock.js',
         'styles': './src/style.css'

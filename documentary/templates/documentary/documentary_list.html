@@ -1,7 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     Once Upon A Time
+{% endblock %}
+
+{% block head %}
+    {% if debug %}
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/src/documentary_list.js"></script>
+    {% else %}
+        <script type="module" src="{% static 'svelte/svelte/documentary_list.js' %}"></script>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -9,18 +19,7 @@
     {% include 'tabs.html' with documentaries=True %}
     <div id="documentary_list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-col-6 gap-4">
         {% for documentary in documentary_list %}
-            <div>
-                <a class="card bg-base-100 w-full h-full shadow-sm" onclick="modal_{{ documentary.id }}.showModal();{% if documentary.audio %} document.getElementById('audio_{{ documentary.id }}').play();{% endif %}">
-                    <figure>
-                        <img
-                        src="{{ documentary.image.url }}"
-                        alt="{{ documentary.title }} cover" />
-                    </figure>
-                    <div class="card-body">
-                        <h2 class="card-title">{{ documentary.title }}</h2>
-                    </div>
-                </a>
-            </div>
+            <div data-svelte="documentary-card" data-documentary-id="{{ documentary.id }}" data-documentary-title="{{ documentary.title }}" data-documentary-image="{{ documentary.image.url }}"></div>
 
             {% if documentary.audio %}
                 <audio id="audio_{{ documentary.id }}" src="{{ documentary.audio.url }}" preload="auto"></audio>
@@ -33,7 +32,7 @@
                     <p class="py-4">{{ documentary.text }}</p>
                 </div>
                 <form method="dialog" class="modal-backdrop">
-                    <button {% if documentary.audio %}onclick="document.getElementById('adocument.getElementById('audio_{{ documentary.id }}')udio_{{ documentary.id }}').pause(); document.getElementById('audio_{{ documentary.id }}').currentTime = 0;"{% endif %}>close</button>
+                    <button {% if documentary.audio %}onclick="document.getElementById('audio_{{ documentary.id }}').pause(); document.getElementById('audio_{{ documentary.id }}').currentTime = 0;"{% endif %}>close</button>
                 </form>
             </dialog>
         {% endfor %}

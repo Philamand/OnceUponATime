@@ -5,15 +5,6 @@
     Once Upon A Time
 {% endblock %}
 
-{% block head %}
-    {% if debug %}
-        <script type="module" src="http://localhost:5173/@vite/client"></script>
-        <script type="module" src="http://localhost:5173/src/htmx.js"></script>
-    {% else %}
-        <script type="module" src="{% static 'svelte/htmx.js' %}"></script>
-    {% endif %}
-{% endblock %}
-
 {% block content %}
 <div class="p-4 pb-18">
     {% include 'tabs.html' with stories=True %}

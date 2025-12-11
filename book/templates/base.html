@@ -9,9 +9,11 @@
       <link href="http://localhost:5173/src/style.css" rel="stylesheet">
       <script type="module" src="http://localhost:5173/@vite/client"></script>
       <script type="module" src="http://localhost:5173/src/dock.js"></script>
+      <script type="module" src="http://localhost:5173/src/htmx.js"></script>
     {% else %}
       <link href="{% static 'styles.css' %}" rel="stylesheet">
       <script type="module" src="{% static 'svelte/dock.js' %}"></script>
+      <script type="module" src="{% static 'svelte/htmx.js' %}"></script>
     {% endif %}
     {% block head %}{% endblock %}
   </head>

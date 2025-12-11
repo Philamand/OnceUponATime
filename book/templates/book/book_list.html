@@ -8,9 +8,9 @@
 {% block head %}
     {% if debug %}
         <script type="module" src="http://localhost:5173/@vite/client"></script>
-        <script type="module" src="http://localhost:5173/src/book_list.js"></script>
+        <script type="module" src="http://localhost:5173/src/htmx.js"></script>
     {% else %}
-        <script type="module" src="{% static 'svelte/book_list.js' %}"></script>
+        <script type="module" src="{% static 'svelte/htmx.js' %}"></script>
     {% endif %}
 {% endblock %}
 

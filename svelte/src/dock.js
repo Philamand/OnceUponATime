@@ -1,9 +1,11 @@
 import { mount } from 'svelte';
 import Dock from './Dock.svelte';
 
+const el = document.getElementById("dock");
+
 mount(Dock, {
-    target: document.getElementById("dock"), 
+    target: el, 
     props: {
-        autoplay: document.getElementById("dock").dataset.autoplay
+        autoplay: el
     }
 })

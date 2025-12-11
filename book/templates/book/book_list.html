@@ -5,7 +5,17 @@
     Once Upon A Time
 {% endblock %}
 
+{% block head %}
+    {% if debug %}
+        <script type="module" src="http://localhost:5173/@vite/client"></script>
+        <script type="module" src="http://localhost:5173/src/swiper.js"></script>
+    {% else %}
+        <script type="module" src="{% static 'svelte/swiper.js' %}"></script>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
+<div id="swiper" data-direction="left" data-url="{% url 'documentary_list' %}"></div>
 <div class="p-4 pb-18">
     {% include 'tabs.html' with stories=True %}
     <div id="book_list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-col-6 gap-4">

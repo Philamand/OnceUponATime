@@ -17,6 +17,6 @@
   </head>
   <body>
     {% block content %}{% endblock %}
-    <div id="dock"></div>
+    <div id="dock" {% if not disable_autoplay %}data-autoplay="true"{% endif %}></div>
   </body>
 </html>

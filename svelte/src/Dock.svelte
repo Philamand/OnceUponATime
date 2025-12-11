@@ -10,6 +10,8 @@
     } from "@lucide/svelte";
     import { dockData } from "./dock_data.svelte";
 
+    let props = $props();
+
     function switchAutoplay() {
         dockData.autoplay = !dockData.autoplay;
         if (dockData.autoplay) {
@@ -56,14 +58,16 @@
         <span class="dock-label">Accueil</span>
     </a>
 
-    <button onclick={switchAutoplay}>
-        {#if dockData.autoplay}
-            <Play />
-        {:else}
-            <Pause />
-        {/if}
-        <span class="dock-label">Lecture Auto</span>
-    </button>
+    {#if props.autoplay}
+        <button onclick={switchAutoplay}>
+            {#if dockData.autoplay}
+                <Play />
+            {:else}
+                <Pause />
+            {/if}
+            <span class="dock-label">Lecture Auto</span>
+        </button>
+    {/if}
 
     <button onclick={switchSound}>
         {#if dockData.sound}

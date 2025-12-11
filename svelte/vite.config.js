@@ -18,6 +18,7 @@ export default defineConfig({
         'documentary_list': './src/documentary_list.js',
         'htmx': './src/htmx.js',
         'dock': './src/dock.js',
+        'swiper': './src/swiper.js',
         'styles': './src/style.css'
       },
       output: {

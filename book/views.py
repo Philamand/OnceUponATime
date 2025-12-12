@@ -2,7 +2,7 @@ from typing import Any
 from django.views.generic import ListView, DetailView
 from django.db.models.query import QuerySet
 from .models import Book
-from .services import get_book_pages, get_book_list_queryset
+from .services import get_book_pages
 
 
 class BookListView(ListView):
@@ -12,10 +12,9 @@ class BookListView(ListView):
     paginate_by = 6
 
     def get_queryset(self) -> QuerySet[Book]:
-        queryset: QuerySet[Book] = super().get_queryset()
-        tag: str | None = self.kwargs.get("slug")
+        queryset: QuerySet[Book] = super().get_queryset().filter(published=True)
 
-        return get_book_list_queryset(queryset, tag)
+        return queryset
 
     def get_template_names(self):
         template: list[str] = super().get_template_names()

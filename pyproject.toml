@@ -12,4 +12,5 @@ dependencies = [
     "gunicorn>=23.0.0",
     "pillow>=12.0.0",
     "psycopg[binary]>=3.2.13",
+    "redis>=7.1.0",
 ]

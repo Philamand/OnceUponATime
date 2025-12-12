@@ -1,0 +1,10 @@
+{% load allauth %}
+<form method="{{ attrs.method }}"
+      {% if attrs.action %}action="{{ attrs.action }}"{% endif %}>
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        {% slot body %}
+        {% endslot %}
+        {% slot actions %}
+        {% endslot %}
+    </fieldset>
+</form>

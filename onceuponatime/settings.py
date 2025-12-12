@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pwa",
     "book.apps.BookConfig",
-    "documentary.apps.DocumentaryConfig",
 ]
 
 MIDDLEWARE = [

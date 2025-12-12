@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "pwa",
     "book.apps.BookConfig",
+    "animal.apps.AnimalConfig",
     "documentary.apps.DocumentaryConfig",
 ]
 

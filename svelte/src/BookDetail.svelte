@@ -8,6 +8,7 @@
     let colClass = $derived(width > height ? "flex-row" : "flex-col");
     const pages = JSON.parse(document.getElementById("pages-data").textContent);
     let progress_count = $state(0);
+    let last_time = 0;
 
     onMount(async () => {
         const promises = pages.map((page) => {
@@ -18,6 +19,7 @@
                 img.onload = () => {
                     progress_count++;
                     resolve(page.image);
+                    console.log(performance.now());
                 };
 
                 img.onerror = () => {
@@ -34,32 +36,36 @@
     });
 
     function onclick(event) {
-        if (dockData.currentIndex > 0) {
-            let audioPlayer = document.getElementById(
-                `audio-${dockData.currentIndex}`,
-            );
-            if (audioPlayer) {
-                audioPlayer.pause();
-                audioPlayer.currentTime = 0;
+        const current_time = performance.now();
+        if (current_time - last_time > 500) {
+            if (dockData.currentIndex > 0) {
+                let audioPlayer = document.getElementById(
+                    `audio-${dockData.currentIndex}`,
+                );
+                if (audioPlayer) {
+                    audioPlayer.pause();
+                    audioPlayer.currentTime = 0;
+                }
             }
-        }
 
-        if (
-            event.clientX > window.screen.width / 4 &&
-            dockData.currentIndex < pages.length - 1
-        ) {
-            dockData.currentIndex++;
-            let audioPlayer = document.getElementById(
-                `audio-${dockData.currentIndex}`,
-            );
-            if (audioPlayer && dockData.sound) {
-                audioPlayer.play();
+            if (
+                event.clientX > window.screen.width / 4 &&
+                dockData.currentIndex < pages.length - 1
+            ) {
+                dockData.currentIndex++;
+                let audioPlayer = document.getElementById(
+                    `audio-${dockData.currentIndex}`,
+                );
+                if (audioPlayer && dockData.sound) {
+                    audioPlayer.play();
+                }
+            } else if (
+                event.clientX < window.screen.width / 4 &&
+                dockData.currentIndex > 0
+            ) {
+                dockData.currentIndex--;
             }
-        } else if (
-            event.clientX < window.screen.width / 4 &&
-            dockData.currentIndex > 0
-        ) {
-            dockData.currentIndex--;
+            last_time = current_time;
         }
     }
 </script>

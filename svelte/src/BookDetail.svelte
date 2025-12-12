@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+    import { useSwipe } from "svelte-gestures";
     import { dockData } from "./dock_data.svelte";
 
     let loading = $state(true);
@@ -19,7 +20,6 @@
                 img.onload = () => {
                     progress_count++;
                     resolve(page.image);
-                    console.log(performance.now());
                 };
 
                 img.onerror = () => {
@@ -68,6 +68,21 @@
             last_time = current_time;
         }
     }
+
+    function swipeHandler(event) {
+        if (event.detail.direction === "right") {
+            onclick({ clientX: 0 });
+        } else {
+            onclick({ clientX: 10000 });
+        }
+    }
+
+    const { swipe, onswipe } = useSwipe(
+        swipeHandler,
+        () => ({ timeframe: 500, minSwipeDistance: 50, touchAction: "pan-y" }),
+        {},
+        true,
+    );
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
@@ -84,6 +99,8 @@
                     : onclick({ clientX: 10000 })}
             aria-label="Change Page"
             class={["h-screen flex", colClass]}
+            {@attach swipe}
+            {onswipe}
         >
             <img src={pages[dockData.currentIndex].image} alt="Illustration" />
             <div class="h-full w-full flex flex-col justify-center text-center">

@@ -46,7 +46,7 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
-ROOT_URLCONF = "onceuponatime.urls"
+ROOT_URLCONF = "lidzee.urls"
 
 TEMPLATES = [
     {
@@ -64,7 +64,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "onceuponatime.wsgi.application"
+WSGI_APPLICATION = "lidzee.wsgi.application"
 
 
 # ─────────────────────────────────────────────────────────────

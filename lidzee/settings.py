@@ -171,7 +171,7 @@ if not DEBUG:
 # ─────────────────────────────────────────────────────────────
 # PWA
 # ─────────────────────────────────────────────────────────────
-PWA_APP_NAME = "Once Upon A Time"
+PWA_APP_NAME = "Lidzee"
 PWA_APP_ICONS = [
     {"src": "/static/images/android-chrome-192x192.png", "sizes": "192x192"}
 ]
